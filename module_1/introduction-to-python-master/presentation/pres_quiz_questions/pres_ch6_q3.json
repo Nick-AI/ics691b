@@ -1,0 +1,22 @@
+{
+    "module": "Introduction to Python",
+    "question": "How do tuples differ from lists?",
+    "instruction": null,
+    "type": "radio",
+    "has_illustration": false,
+    "answers": [
+        "A list is an ordered collection, while a tuple is an unordered collection.",
+        "A list is mutable, while a tuple is not.",
+        "A list can handle elements of different data types, while a tuple can only contain elements of the same data type.",
+        "Tuples have fewer values than lists."
+       
+    ],
+    "correct_answer": 1,
+    "explanations": [
+        null,
+        null,
+        null,
+        null
+    ],
+    "hints": []
+}
