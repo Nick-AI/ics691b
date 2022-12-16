@@ -19,6 +19,7 @@ def run_training(gpu: int,
     # By manually seeding we ensure all models start from the same initial state
     # Another way of accomplishing this is by having one process (e.g. rank 0) broadcast its model at the start
     torch.manual_seed(0)
+    print(f'Process index: {gpu}')
 
     batch_size = 8
     rank = args.nr * args.gpus + gpu
@@ -92,8 +93,6 @@ if __name__ == '__main__':
                         type=int, help='number of nodes')
     parser.add_argument('-g', '--gpus', default=1, type=int,
                         help='number of gpus per node')
-    parser.add_argument('-s', "--world_size", type=int, default=2,
-                        help="number of processes to spawn")
     parser.add_argument('-i', "--input_size", type=int, default=100,
                         help="dimensionality of the data")
     parser.add_argument('-nb', "--num_samples", type=int, default=1_024,
