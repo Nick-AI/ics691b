@@ -243,7 +243,7 @@ if __name__ == '__main__':
                         help="size of the dataset")
     parser.add_argument('-d', "--num_hl", type=int, default=0,
                         help="number of hidden layers in the network")
-    parser.add_argument('-h', "--hl_size", type=int, default=100,
+    parser.add_argument('-z', "--hl_size", type=int, default=100,
                         help="size of the hidden layers in the network")
     parser.add_argument('-e', "--epochs", type=int, default=10,
                         help="number of epochs to train for")
