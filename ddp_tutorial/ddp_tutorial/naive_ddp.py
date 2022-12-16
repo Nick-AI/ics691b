@@ -228,7 +228,7 @@ def init_process(rank: int,
         rank=rank,
         world_size=world_size)
     if train_fn_kwargs:
-        train_fn(rank, world_size, **dict(train_fn_kwargs))
+        train_fn(rank, world_size, train_fn_kwargs)
     else:
         train_fn(rank, world_size)
 
@@ -261,7 +261,7 @@ if __name__ == '__main__':
     processes = []
     for rank in range(args.world_size):
         p = mp.Process(target=init_process, args=(
-            rank, args.world_size, train_fn_kwargs, run_training, 'gloo'))
+            rank, args.world_size, run_training, train_fn_kwargs, 'gloo'))
         p.start()
         processes.append(p)
 
