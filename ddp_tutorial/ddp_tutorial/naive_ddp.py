@@ -261,7 +261,7 @@ if __name__ == '__main__':
     processes = []
     for rank in range(args.world_size):
         p = mp.Process(target=init_process, args=(
-            rank, args.world_size, train_fn_kwargs, run_training))
+            rank, args.world_size, train_fn_kwargs, run_training, 'gloo'))
         p.start()
         processes.append(p)
 
