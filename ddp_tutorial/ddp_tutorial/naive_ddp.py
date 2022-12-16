@@ -156,7 +156,8 @@ def run_training(rank: int,
                  num_samples: int = 1_024,
                  num_hl: int = 0,
                  hl_size: int = 10,
-                 epochs: int = 10):
+                 epochs: int = 10,
+                 verbose: int = 1):
     """Main training code
 
     Args:
@@ -167,6 +168,7 @@ def run_training(rank: int,
         num_hl (int, optional): Number of hidden layers in the NN. Defaults to 0.
         hl_size (int, optional): Size of the hidden layers in the NN. Defaults to 10.
         epochs(int, optional): Number of epochs to train for.
+        vebose (int, optional): Whether to print training progress. Default is 1 (True).
     """
     # By manually seeding we ensure all models start from the same initial state
     # Another way of accomplishing this is by having one process (e.g. rank 0) broadcast its model at the start
@@ -197,8 +199,9 @@ def run_training(rank: int,
 
             # print statistics
             running_loss += loss.item()
-        print(
-            f'Process {rank} / {world_size} -> Epoch: {epoch + 1} - total loss: {running_loss / 2000:.3f}')
+        if verbose:
+            print(
+                f'Process {rank} / {world_size} -> Epoch: {epoch + 1} - total loss: {running_loss / 2000:.3f}')
 
 
 def init_process(rank: int,
@@ -247,6 +250,8 @@ if __name__ == '__main__':
                         help="size of the hidden layers in the network")
     parser.add_argument('-e', "--epochs", type=int, default=10,
                         help="number of epochs to train for")
+    parser.add_argument('-v', '--verbose', type=int, default=1,
+                        help='Print training process. 1=verbose, 0=silent.')
 
     args = parser.parse_args()
 
@@ -255,7 +260,8 @@ if __name__ == '__main__':
         'num_samples': args.num_samples,
         'num_hl': args.num_hl,
         'hl_size': args.hl_size,
-        'epochs': args.epochs
+        'epochs': args.epochs,
+        'verbose': args.verbose
     }
 
     processes = []

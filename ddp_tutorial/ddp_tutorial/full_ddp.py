@@ -81,8 +81,9 @@ def run_training(gpu: int,
 
             # print statistics
             running_loss += loss.item()
-        print(
-            f'Process {rank} / {args.world_size} -> Epoch: {epoch + 1} - total loss: {running_loss / 2000:.3f}')
+        if args.verbose:
+            print(
+                f'Process {rank} / {args.world_size} -> Epoch: {epoch + 1} - total loss: {running_loss / 2000:.3f}')
 
 
 if __name__ == '__main__':
@@ -105,6 +106,8 @@ if __name__ == '__main__':
                         help="number of epochs to train for")
     parser.add_argument('-nr', '--nr', default=0, type=int,
                         help='ranking within the nodes')
+    parser.add_argument('-v', '--verbose', type=int, default=1,
+                        help='Print training process. 1=verbose, 0=silent.')
 
     args = parser.parse_args()
 
