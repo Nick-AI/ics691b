@@ -224,7 +224,7 @@ def init_process(rank: int,
     os.environ['MASTER_ADDR'] = '127.0.0.1'
     os.environ['MASTER PORT'] = '8899'
     dist.init_process_group(
-        init_method=backend,
+        backend,
         rank=rank,
         world_size=world_size)
     if train_fn_kwargs:
