@@ -9,5 +9,5 @@
 
 # optional if you use come kind of virtual env:
 # conda activate sar_new
-time python /dir/to/ddp_tutorial/ddp_tutorial/full_ddp.py -n 1 -g 2 -v 0 -s 2 -n 1000000 -d 10 -z 1000
+time python /dir/to/ddp_tutorial/ddp_tutorial/full_ddp.py -n 1 -g 2 -v 0 -s 2 -nb 1000000 -d 10 -z 1000
 

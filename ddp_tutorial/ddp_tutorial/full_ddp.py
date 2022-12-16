@@ -96,7 +96,7 @@ if __name__ == '__main__':
                         help="number of processes to spawn")
     parser.add_argument('-i', "--input_size", type=int, default=100,
                         help="dimensionality of the data")
-    parser.add_argument('-n', "--num_samples", type=int, default=1_024,
+    parser.add_argument('-nb', "--num_samples", type=int, default=1_024,
                         help="size of the dataset")
     parser.add_argument('-d', "--num_hl", type=int, default=0,
                         help="number of hidden layers in the network")
