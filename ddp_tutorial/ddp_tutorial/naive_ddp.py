@@ -228,7 +228,7 @@ def init_process(rank: int,
         rank=rank,
         world_size=world_size)
     if train_fn_kwargs:
-        train_fn(rank, world_size, **train_fn_kwargs)
+        train_fn(rank, world_size, **dict(train_fn_kwargs))
     else:
         train_fn(rank, world_size)
 
