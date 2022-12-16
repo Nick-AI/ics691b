@@ -177,6 +177,7 @@ def run_training(rank: int,
         world_size, batch_size, input_size, num_samples)
 
     nn_mdl = FFNet(input_size=input_size, num_hl=num_hl, hl_size=hl_size)
+    print(f'Process: {rank} input size: {input_size} hl_size: {hl_size}')
     optimizer = optim.SGD(nn_mdl.parameters(), lr=0.001, momentum=0.9)
     loss_fn = nn.MSELoss()
 
