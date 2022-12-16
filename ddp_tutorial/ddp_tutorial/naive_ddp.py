@@ -222,7 +222,7 @@ def init_process(rank: int,
             f'Supported backends: {val_backends} don\'t include: {backend}')
     # There are other ways than environment variables of initializing such as TCP or a shared file system for IPC
     os.environ['MASTER_ADDR'] = '127.0.0.1'
-    os.environ['MASTER PORT'] = '8899'
+    os.environ['MASTER_PORT'] = '8899'
     dist.init_process_group(
         backend,
         rank=rank,
